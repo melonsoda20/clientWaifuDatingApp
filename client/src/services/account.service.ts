@@ -28,6 +28,19 @@ export class AccountService {
     );
   }
 
+  register(userData: User){
+    return this.http.post(this.baseUrl + 'account/register', userData).pipe(
+      map((loginData: Login) => {
+        if(loginData){
+          const userStorageKey = this.storageService.getUserStorageKey();
+          localStorage.setItem(userStorageKey, JSON.stringify(loginData));
+          this.currentUserSource.next(loginData);
+        }
+        return loginData;
+      })
+    );
+  }
+
   setCurrentUser(user: Login){
     this.currentUserSource.next(user);
   }
