@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/services/account.service';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -12,13 +13,22 @@ export class NavComponent implements OnInit {
     password: ''
   };
 
-  constructor() { }
+  isLoggedIn: boolean;
+
+  constructor(private accountService: AccountService) { 
+    
+  }
 
   ngOnInit(): void {
   }
 
   login(){
-    console.log(this.user);
+    this.accountService.login(this.user).subscribe(response => {
+      console.log(response);
+      this.isLoggedIn = true;
+    }, error =>{
+      console.log(error);
+    });
   }
 
 }
