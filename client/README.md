@@ -25,3 +25,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Goal
+Project is created to practice creating a web app using Angular. The primary goal of the app was to just create a functional angular app that can communicate and display the data from the .net API I created
