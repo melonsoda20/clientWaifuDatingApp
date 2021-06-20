@@ -31,4 +31,8 @@ export class NavComponent implements OnInit {
     });
   }
 
+  logout(){
+    this.isLoggedIn = false;
+  }
+
 }
