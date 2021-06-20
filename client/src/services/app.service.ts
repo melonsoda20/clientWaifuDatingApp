@@ -11,7 +11,7 @@ export class AppService {
 
   getCurrentUser(){
     const userStorageKey = this.storageService.getUserStorageKey();
-    const user: Login = JSON.parse(localStorage.getItem(userStorageKey));
-    return user;
+    const currentUser: Login = JSON.parse(localStorage.getItem(userStorageKey));
+    return currentUser;
   }
 }

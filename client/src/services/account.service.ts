@@ -18,11 +18,11 @@ export class AccountService {
   login(user: User){
     return this.http.post(this.baseUrl + 'account/login', user).pipe(
       map((response: Login) => {
-        const user = response;
-        if(user){
+        const loginData = response;
+        if(loginData){
           const userStorageKey = this.storageService.getUserStorageKey();
-          localStorage.setItem(userStorageKey, JSON.stringify(user));
-          this.currentUserSource.next(user);
+          localStorage.setItem(userStorageKey, JSON.stringify(loginData));
+          this.currentUserSource.next(loginData);
         }
       })
     );
