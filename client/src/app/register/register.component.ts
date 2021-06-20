@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/models/user.model';
 
 @Component({
@@ -7,6 +7,7 @@ import { User } from 'src/models/user.model';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  @Input() usersFromHomeComponent: any;
   userData: User = {
     username: '',
     password: ''
