@@ -12,8 +12,7 @@ import { ReplaySubject } from 'rxjs';
 export class AccountService {
   baseUrl:string = 'https://localhost:5001/api/';
   private currentUserSource = new ReplaySubject<Login>(1);
-  currentUser$ = this.currentUserSource.asObservable();
-
+  
   constructor(private http: HttpClient, private storageService: StorageService) { }
 
   login(user: User){
@@ -31,6 +30,10 @@ export class AccountService {
 
   setCurrentUser(user: Login){
     this.currentUserSource.next(user);
+  }
+
+  getCurrentUser(){
+    return this.currentUserSource.asObservable();
   }
 
   logout(){
