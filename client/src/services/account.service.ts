@@ -20,7 +20,7 @@ export class AccountService {
       map((response: Login) => {
         const loginData = response;
         if(loginData){
-          const userStorageKey = this.storageService.getUserStorageKey();
+          const userStorageKey : string = this.storageService.getUserStorageKey();
           localStorage.setItem(userStorageKey, JSON.stringify(loginData));
           this.currentUserSource.next(loginData);
         }
@@ -32,7 +32,7 @@ export class AccountService {
     return this.http.post(this.baseUrl + 'account/register', userData).pipe(
       map((loginData: Login) => {
         if(loginData){
-          const userStorageKey = this.storageService.getUserStorageKey();
+          const userStorageKey : string = this.storageService.getUserStorageKey();
           localStorage.setItem(userStorageKey, JSON.stringify(loginData));
           this.currentUserSource.next(loginData);
         }
