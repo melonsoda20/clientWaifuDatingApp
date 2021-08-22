@@ -5,12 +5,13 @@ import {map} from 'rxjs/operators';
 import { StorageService } from './storage.service';
 import { Login } from 'src/models/login.model';
 import { ReplaySubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl:string = 'https://localhost:5001/api/';
+  baseUrl:string = environment.apiUrl;
   private currentUserSource = new ReplaySubject<Login>(1);
   
   constructor(private http: HttpClient, private storageService: StorageService) { }
