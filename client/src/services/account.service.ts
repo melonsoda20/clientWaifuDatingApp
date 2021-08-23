@@ -21,9 +21,7 @@ export class AccountService {
       map((response: Login) => {
         const loginData = response;
         if(loginData){
-          const userStorageKey : string = this.storageService.getUserStorageKey();
-          localStorage.setItem(userStorageKey, JSON.stringify(loginData));
-          this.currentUserSource.next(loginData);
+          this.setCurrentUser(loginData);
         }
       })
     );
@@ -33,9 +31,7 @@ export class AccountService {
     return this.http.post(this.baseUrl + 'account/register', userData).pipe(
       map((loginData: Login) => {
         if(loginData){
-          const userStorageKey : string = this.storageService.getUserStorageKey();
-          localStorage.setItem(userStorageKey, JSON.stringify(loginData));
-          this.currentUserSource.next(loginData);
+          this.setCurrentUser(loginData);
         }
         return loginData;
       })
@@ -43,6 +39,8 @@ export class AccountService {
   }
 
   setCurrentUser(user: Login){
+    const userStorageKey : string = this.storageService.getUserStorageKey();
+    localStorage.setItem(userStorageKey, JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 

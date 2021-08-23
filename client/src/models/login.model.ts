@@ -1,4 +1,5 @@
 export class Login {
     username: string;
-    token: string
+    token: string;
+    photoUrl: string;
 }
