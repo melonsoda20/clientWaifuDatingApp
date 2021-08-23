@@ -48,4 +48,10 @@ export class MembersService {
 
     });
   }
+
+  deletePhoto(photoId: Number){
+    return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId, {
+
+    });
+  }
 }
